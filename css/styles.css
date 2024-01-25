@@ -1,0 +1,262 @@
+/* Page Styles
+================================*/
+h1, h2, h3, h4, h5, h6, a {
+  font-family: 'Overpass', sans-serif;
+}
+
+h4 {
+  line-height: 1.5em;
+  margin-top: 0px;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  line-height: 1.65em;
+  font-size: 1.2em;
+}
+
+a {
+  cursor: pointer;
+}
+
+body {
+  padding-top: 50px;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.cushion {
+  padding-bottom: 20px;
+}
+
+
+/* Header
+================================*/
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  color: #333;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #a5bea5;
+}
+
+.navbar-default .navbar-collapse .dropdown .dropdown-menu a:hover,
+.dropdown-toggle:active, .open .dropdown-toggle {
+  color: #FFF !important;
+  background-color: #b9d5b9 !important;
+}
+
+.navbar {
+  background-color: #fff;
+}
+
+.nav-tabs {
+  border-bottom: 0px;
+}
+
+.transparent {
+  background: rgba(0,0,0,0.3);
+  height: 350px;
+  width: 100%;
+}
+
+.cbc {
+  padding-top: 25px;
+  padding-left: 5px;
+  margin: 0 auto;
+  color: white;
+  font-size: 2em;
+  line-height: 1.1em;
+  letter-spacing: -0.03em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+/* Images & Icons
+================================*/
+
+.header-full,
+.gather-full {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100% \9;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.header-full {
+  background-image: url(../img/drawing-cork.jpg);
+}
+
+.gather-full {
+  background-image: url(../img/city-cork.jpg);
+}
+
+.imgMenu {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 65px;
+  font-size: 0px;
+}
+
+.imgMenu img {
+  width: 70%;
+  height: auto;
+  margin: 25px  auto;
+}
+
+.imgMenu img:hover {
+  cursor: pointer;
+}
+
+i {
+  margin-left: 5px;
+}
+
+/* Layout
+================================*/
+
+.welcome,
+.mission {
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.6em;
+  color: #a5bea5;
+}
+
+.welcome {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.mission,
+.gather {
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+.gather h3 {
+  padding-bottom: 15px;
+}
+
+.gather p {
+  line-height: 1.7em;
+}
+
+.gather button {
+  font-family: 'Roboto', sans-serif;
+  color: #a5bea5;
+  background-color: white;
+  border: #a5bea5 1px solid;
+  margin-top: 35px;
+  width: 200px;
+  height: 45px;
+}
+
+.gather button:hover {
+  color: #fff;
+  background-color: #b9d5b9;
+  border: #b9d5b9 1px solid;
+}
+
+
+/* Footer
+================================*/
+
+.footer {
+  background-color: #a5bea5;
+  color: #fff;
+  height: 585px;
+  padding: 25px 20px 0;
+}
+.footer p,
+.footer a {
+  color: inherit;
+}
+.footer li {
+  text-align: center;
+}
+.footer hr {
+  max-width: 200px;
+}
+
+.copyright {
+	opacity: .7;
+	font-size: .8em;
+  margin-top: 25px;
+}
+
+.link-list {
+	list-style-type: none;
+	line-height: 1.8;
+	margin: 0;
+	padding: 0;
+}
+.link-list .heading {
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+	margin-bottom: 7px;
+}
+
+
+/* Media Queries
+================================*/
+
+@media (min-width: 500px) {
+  .imgMenu {
+    padding-bottom: 70px;
+    padding-top: 50px;
+  }
+  .imgMenu img {
+    width: 40%;
+    margin: 30px auto 0px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .header-full, .transparent, .gather-full {
+    height: 450px;
+    padding: 0;
+  }
+  .cbc {
+    font-size: 3em;
+    padding-left: 80px;
+    padding-top: 120px;
+    letter-spacing: -0.05em;
+  }
+
+  .imgMenu img {
+    width: 25%;
+    display: inline-block;
+    margin: 25px;
+  }
+
+  .footer {
+    height: 290px;
+    padding-top: 15px;
+  }
+  .copyright {
+    margin-top: 50px;
+  }
+	.link-list {
+		margin-top: 30px;
+	}
+}

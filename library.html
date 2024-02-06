@@ -10,6 +10,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+        
+            #libraryTableSection {
+                margin: 0 auto;
+                width: 80%;
+                position: relative;
+            }
+        
+            #libraryTable {
+                width: 100%;
+                border-collapse: collapse;
+            }
+        
+            #libraryTable th,
+            #libraryTable td {
+                padding: 8px;
+                text-align: center;
+                border-bottom: 1px solid #ddd;
+            }
+        
+            #libraryTable th {
+                background-color: #f2f2f2;
+            }
+        
+            #libraryTable tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        
+            .description-cell {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px; /* Adjust the max-width as needed */
+                cursor: pointer;
+                position: relative;
+            }
+        
+            .popup {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                padding: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+        
+            .close-btn {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                cursor: pointer;
+            }
+        </style>
 </head>
 
 <body>
@@ -31,73 +90,73 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
             <!-- reposnive bar open and close -->
         </nav>
-        <h1>Our Post</h1>
+        <h1>Church Library</h1>
     </section>
+
+    <br>
 
     <!-- Blog Page Section Start -->
 
-    <section class="blog-content">
-        <div class="row">
-            <div class="blog-left">
-                <h2>Our Certificate & Online Program</h2>
-                <h5>February 1, 2024</h5>
-                <img src="img/post.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolor consequatur, nobis quae obcaecati delectus at aspernatur, placeat quasi iure mollitia. Repellendus a ut nostrum dolore velit odit cumque, quos doloribus sint id aperiam eius aliquam quo modi sequi rem quia exercitationem laborum, ratione expedita! Deleniti velit officia incidunt illum.</p>
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore corrupti blanditiis deserunt
-                    incidunt itaque ut laudantium a amet omnis nihil, dolor doloribus. Voluptatum, accusantium? Quo,
-                    aperiam nobis labore pariatur, esse vitae amet repellendus libero architecto nisi facere unde
-                    ducimus perspiciatis, laudantium alias porro. Sapiente voluptatem eligendi at voluptatum optio
-                    facilis?</p>
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore corrupti blanditiis deserunt
-                    incidunt itaque ut laudantium a amet omnis nihil, dolor doloribus. Voluptatum, accusantium? Quo,
-                    aperiam nobis labore pariatur, esse vitae amet repellendus libero architecto nisi facere unde
-                    ducimus perspiciatis, laudantium alias porro. Sapiente voluptatem eligendi at voluptatum optio
-                    facilis?</p>
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore corrupti blanditiis deserunt
-                    incidunt itaque ut laudantium a amet omnis nihil, dolor doloribus. Voluptatum, accusantium? Quo,
-                    aperiam nobis labore pariatur, esse vitae amet repellendus libero architecto nisi facere unde
-                    ducimus perspiciatis, laudantium alias porro. Sapiente voluptatem eligendi at voluptatum optio
-                    facilis?</p>
 
-                <div class="comment-box">
-                    <h3>Leave a Comment</h3>
-                    <form class="comment-form">
-                        <input type="text" placeholder="Enter Name" required>
-                        <input type="email" placeholder="Enter Email" required>
-                        <textarea rows="5" placeholder="Your Comment"></textarea>
-                        <button type="submit" class="hero_btn btn">POST COMMENT</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="blog-right">
-                <h3>Post Categories</h3>
-                <div>
-                    <span>Business Analytics</span>
-                    <span>12</span>
-                </div>
-                <div>
-                    <span>Machine Learning</span>
-                    <span>29</span>
-                </div>
-                <div>
-                    <span>Computer Science</span>
-                    <span>15</span>
-                </div>
-                <div>
-                    <span>Data Analytics</span>
-                    <span>22</span>
-                </div>
-                <div>
-                    <span>Full Stack</span>
-                    <span>20</span>
-                </div>
-            </div>
+    <section id="libraryTableSection">
+        <table id="libraryTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Publish Date</th>
+                    <th>Content URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table body will be dynamically populated -->
+            </tbody>
+        </table>
+        <div class="popup" id="popup">
+            <span class="close-btn">&times;</span>
+            <div id="descriptionContent"></div>
         </div>
     </section>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const sheetId = '1_mVw4Jtn-2TdMVrWpTnA3dYJW0yvvm9_RzubatnmU4Q';
+            const apiKey = 'AIzaSyDDmQkNENe4B3SBeGHHXP067X6vOdYQbGc';
+            const sheetName = 'LIBRARY';
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!A2:E?key=${apiKey}`;
+    
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#libraryTable tbody');
+                    data.values.forEach(row => {
+                        const tr = document.createElement('tr');
+                        row.forEach(cell => {
+                            const td = document.createElement('td');
+                            // Check if the cell contains HTML content (a hyperlink)
+                            if (cell.startsWith('<a href=')) {
+                                // Create a temporary element to parse the HTML content
+                                const temp = document.createElement('div');
+                                temp.innerHTML = cell;
+                                // Append the parsed HTML content to the table cell
+                                td.appendChild(temp.firstChild);
+                            } else {
+                                // If it's plain text, simply set the text content
+                                td.textContent = cell;
+                            }
+                            tr.appendChild(td);
+                        });
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+    </script>
+    
+    
 
     <!-- Blog Page Section end -->
     

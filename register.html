@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar - LOGIM</title>
+    <title>Register - LOGIM</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
 </head>
 
 <body>
@@ -30,18 +31,51 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
             <!-- reposnive bar open and close -->
         </nav>
-        <h1>Events & Calendar</h1>
+        <h1>Contact Us</h1>
     </section>
 
-    <!-- course start -->
+    <!-- Contact Us Section Start -->
 
-    <section>
-        <iframe src="https://calendar.google.com/calendar/embed?src=2dd0d4895fdc5b6c8c4deb2ddc83fd7c00870b0760b1b1648b8fd76da551c96a%40group.calendar.google.com&ctz=Africa%2FLagos" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    <section class="contact-us">
+        <div class="row">
+            <div class="content-col">
+                <div>
+                    <i class="fa fa-home"></i>
+                    <span>
+                        <h5>ABC Road, ABC Building</h5>
+                        <p>Main University, Karachi, Pakistan</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <span>
+                        <h5>+927445546525</h5>
+                        <p>Monday To Saturday, 9AM To 6PM</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <span>
+                        <h5>xyz@email.com</h5>
+                        <p>Email Us Yor Query</p>
+                    </span>
+                </div>
+            </div>
+            <div class="content-col">
+                <form>
+                    <input type="text" placeholder="Enter Name" required>
+                    <input type="email" placeholder="Enter Email" required>
+                    <input type="text" placeholder="Enter Subject" required>
+                    <textarea rows="8" placeholder="Message" required></textarea>
+                    <button type="submit" class="hero_btn btn">Send Message</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <!-- best courses end -->
+    <!-- Contact Us Section End -->
 
-    <!-- Footer start -->
+    <!-- Footer Section Start -->
     <section class="footer">
         <hr>
         <h4>About Us</h4>
@@ -59,9 +93,7 @@
         <p>Made with <i class="fas fa-heart"></i> by <a href="#">Bisma Dev</a></p>
         <p>Copyright © 2024 <a href="index.html">Xplore Skill</a>. All Rights Reserved</p>
     </section>
-    <!-- Footer end -->
-
-    <script src="script.js"></script>
+    <!-- Footer Section End -->
 </body>
-
+<script src="script.js"></script>
 </html>

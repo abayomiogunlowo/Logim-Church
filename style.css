@@ -652,6 +652,13 @@ hr {
     margin-right: 30px;
 }
 
+.content-col div .fab {
+    font-size: 28px;
+    color: #24f8c7;
+    margin: 10px;
+    margin-right: 30px;
+}
+
 .content-col div p {
     padding: 0;
 }

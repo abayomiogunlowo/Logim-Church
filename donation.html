@@ -10,6 +10,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f8f9fa;
+        }
+        
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+        
+        section {
+        width: 30%;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        box-sizing: border-box;
+        }
+        
+        section:hover {
+        transform: translateY(-5px);
+        }
+        
+        h2 {
+        font-size: 1.5em;
+        margin-top: 0;
+        color: #333;
+        }
+        
+        p {
+        font-size: 1em;
+        margin-top: 0;
+        color: #666;
+        }
+        
+        button {
+        display: block;
+        width: 100%;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+        background-color: #0056b3;
+        }
+        
+        @media screen and (max-width: 768px) {
+        section {
+            width: 100%;
+        }
+        }
+    </style>
 </head>
 
 <body>
@@ -31,23 +98,30 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
             <!-- reposnive bar open and close -->
         </nav>
-        <h1>About Us</h1>
+        <h1>Donation</h1>
     </section>
 
     <!-- About Us Section Start -->
 
-    <section class="about-us">
-        <div class="row">
-            <div class="about-col">
-                <h1>The mission of God in the hands of ordinary people</h1>
-                <p>We invite people to experience life at LOGIM. We champion a “come as you are” culture. We are inclusive and non-judgemental and celebrate everyone’s individual story.</p>
-                <a href="register.html" class="hero_btn btn">JOIN US</a>
-            </div>
-            <div class="about-col">
-                <img src="img/about.png" alt="">
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <section id="donation1">
+        <h2>Tithe Offering</h2>
+        <p>Your regular donation to support the church's ongoing ministries and operations.</p>
+        <button onclick="location.href='https://example.com/tithe-donation';">Donate Now</button>
+        </section>
+    
+        <section id="donation2">
+        <h2>Mission Fund</h2>
+        <p>Support our mission work locally and globally, spreading the message of love and hope.</p>
+        <button onclick="location.href='https://example.com/mission-donation';">Donate Now</button>
+        </section>
+    
+        <section id="donation3">
+        <h2>Building Fund</h2>
+        <p>Contribute to the construction and maintenance of our church buildings and facilities.</p>
+        <button onclick="location.href='https://example.com/building-donation';">Donate Now</button>
+        </section>
+    </div>
 
     <!-- About Us Section end -->
 

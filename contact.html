@@ -15,16 +15,17 @@
 <body>
     <section class="Sub-header">
         <nav>
-            <a href="index.html" class="logo">Light of God Ministry
+            <a href="index.html" class="logo">Light of God Int'l Ministries
             </a>
             <div class="nav-links" id="navLinks">
                 <!-- reposnive bar open and close -->
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="live.html">Live</a></li>
                     <li><a href="calendar.html">Calendar</a></li>
                     <li><a href="library.html">Library</a></li>
-                    <li><a href="donation.html">Donation</a></li>
+                    <li><a href="give.html">Give</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
@@ -71,13 +72,14 @@
                 </div>                
             </div>
             <div class="content-col">
-                <form>
-                    <input type="text" placeholder="Enter Name" required>
-                    <input type="email" placeholder="Enter Email" required>
-                    <input type="text" placeholder="Enter Subject" required>
-                    <textarea rows="8" placeholder="Message" required></textarea>
+                <form id="form1" action="https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec" method="post" autocomplete="">
+                    <input type="hidden" name="FormId" value="form1">
+                    <input type="text" name="Name" placeholder="Enter Name" required>
+                    <input type="email" name="Email" placeholder="Enter Email" required>
+                    <input type="text" name="Subject" placeholder="Enter Subject" required>
+                    <textarea name="Message" rows="8" placeholder="Message" required></textarea>
                     <button type="submit" class="hero_btn btn">Send Message</button>
-                </form>
+                </form>                
             </div>
         </div>
     </section>

@@ -15,63 +15,70 @@
 <body>
     <section class="Sub-header">
         <nav>
-            <a href="index.html" class="logo">Light of God Ministry
+            <a href="index.html" class="logo">Light of God Int'l Ministries
             </a>
             <div class="nav-links" id="navLinks">
                 <!-- reposnive bar open and close -->
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="live.html">Live</a></li>
                     <li><a href="calendar.html">Calendar</a></li>
                     <li><a href="library.html">Library</a></li>
-                    <li><a href="donation.html">Donation</a></li>
+                    <li><a href="give.html">Give</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
             <!-- reposnive bar open and close -->
         </nav>
-        <h1>Contact Us</h1>
+        <h1>Member Registration</h1>
     </section>
 
     <!-- Contact Us Section Start -->
-
-    <section class="contact-us">
-        <div class="row">
-            <div class="content-col">
-                <div>
-                    <i class="fa fa-home"></i>
-                    <span>
-                        <h5>ABC Road, ABC Building</h5>
-                        <p>Main University, Karachi, Pakistan</p>
-                    </span>
-                </div>
-                <div>
-                    <i class="fa fa-phone"></i>
-                    <span>
-                        <h5>+927445546525</h5>
-                        <p>Monday To Saturday, 9AM To 6PM</p>
-                    </span>
-                </div>
-                <div>
-                    <i class="fa fa-envelope"></i>
-                    <span>
-                        <h5>xyz@email.com</h5>
-                        <p>Email Us Yor Query</p>
-                    </span>
-                </div>
-            </div>
-            <div class="content-col">
-                <form>
-                    <input type="text" placeholder="Enter Name" required>
-                    <input type="email" placeholder="Enter Email" required>
-                    <input type="text" placeholder="Enter Subject" required>
-                    <textarea rows="8" placeholder="Message" required></textarea>
-                    <button type="submit" class="hero_btn btn">Send Message</button>
-                </form>
-            </div>
+    <section>
+        <div class="content-col">
+        <form id="form2" action="https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec" method="post" autocomplete="">
+          <input type="hidden" name="FormId" value="form2">
+          <label for="full_name">Full Name</label><br>
+          <input type="text" id="full_name" name="Full Name" required><br><br>
+          
+          <label for="email">Email</label><br>
+          <input type="email" id="email" name="Email" required><br><br>
+          
+          <label for="phone">Phone Number</label><br>
+          <input type="tel" id="phone" name="Phone Number" required><br><br>
+          
+          <label for="birthdate">Date of Birth</label><br>
+          <input type="date" id="birthdate" name="Date of Birth" required><br><br>
+          
+          <label for="gender">Gender</label><br>
+          <select id="gender" name="Gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select><br><br>
+          
+          <label for="address">Address</label><br>
+          <textarea id="address" name="Address" rows="4" required></textarea><br><br>
+          
+          <label for="membership_type">Membership Type</label><br>
+          <input type="radio" id="membership_type" name="Membership Type" value="regular" checked>
+          <label for="regular">Regular</label><br>
+          <input type="radio" id="membership_type" name="Membership Type" value="volunteer">
+          <label for="volunteer">Volunteer</label><br><br>
+          
+          <label for="interests">Interests/Hobbies</label><br>
+          <input type="text" id="interests" name="Interests/Hobbies"><br><br>
+          
+          <label for="notes">Additional Notes</label><br>
+          <textarea id="notes" name="Additional Notes" rows="4"></textarea><br><br>
+          
+          <input type="submit" value="Submit">
+        </form>
         </div>
-    </section>
+      </section>
+      
 
     <!-- Contact Us Section End -->
 

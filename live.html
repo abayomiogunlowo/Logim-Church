@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar - LOGIM</title>
+    <title>Live - LOGIM</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
@@ -31,14 +31,41 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
             <!-- reposnive bar open and close -->
         </nav>
-        <h1>Events & Calendar</h1>
+        <h1>Live Event</h1>
     </section>
     
     <br>
 
-    <section style="display: flex; justify-content: center;">
-        <iframe src="https://calendar.google.com/calendar/embed?src=2dd0d4895fdc5b6c8c4deb2ddc83fd7c00870b0760b1b1648b8fd76da551c96a%40group.calendar.google.com&ctz=Africa%2FLagos" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-    </section>
+    <div id="player"></div>
+
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '100%', // Set width to 100% for responsiveness
+                videoId: 'sU6bBBGK--M',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 1,
+                    'rel': 0,
+                    'showinfo': 0,
+                    'modestbranding': 1,
+                    'playsinline': 1,
+                    'origin': 'https://logim-church.vercel.app/'
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <!-- Footer Section Start -->
     <section class="footer">

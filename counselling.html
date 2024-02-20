@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session - LOGIM</title>
+    <meta name="description" content="Welcome to Light of God Ministry. Experience the Power of Faith. Join us for warm community, powerful messages, and spiritual growth.">
+    <meta property="og:title" content="Book a Counselling Session - LOGIM">
+    <meta property="og:description" content="Join our counseling program for support and guidance in times of need.">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+</head>
+
+<body>
+    <section class="Sub-header">
+        <nav>
+            <a href="index.html" class="logo">Light of God Int'l Ministries
+            </a>
+            <div class="nav-links" id="navLinks">
+                <!-- reposnive bar open and close -->
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="live.html">Live</a></li>
+                    <li><a href="calendar.html">Calendar</a></li>
+                    <li><a href="library.html">Library</a></li>
+                    <li><a href="give.html">Give</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+            <!-- reposnive bar open and close -->
+        </nav>
+        <h1>Counseling Session</h1>
+    </section>
+
+    <!-- Contact Us Section Start -->
+
+    <section class="contact-us">
+        <div class="row">
+            <div class="content-col">
+                <div>
+                    <i class="fa fa-user-friends"></i>
+                    <span>
+                        <h5>Counseling Program</h5>
+                        <p>Join our counseling program for support and guidance in times of need.</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-calendar-alt"></i>
+                    <span>
+                        <h5>Appointment Hours</h5>
+                        <p>Monday to Friday: 9:00 AM - 5:00 PM</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <span>
+                        <h5>Contact Us</h5>
+                        <p>+2348022446543</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fab fa-whatsapp" onclick="window.location.href='https://your-whatsapp-link';"></i>
+                    <span>
+                        <h5 onclick="window.location.href='https://your-whatsapp-link';">Send WhatsApp Message</h5>
+                    </span>
+                </div>
+                <div>
+                    <i class="fab fa-telegram" onclick="window.location.href='https://your-telegram-link';"></i>
+                    <span>
+                        <h5 onclick="window.location.href='https://your-telegram-link';">Send Telegram Message</h5>
+                    </span>
+                </div>                                
+            </div>
+            <div class="content-col">
+                <form id="counselingForm" action="https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec" method="post" autocomplete="off">
+                    <input type="hidden" name="FormId" value="counselingForm">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" name="FullName" id="fullName" placeholder="Enter Your Full Name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="Email" id="email" placeholder="Enter Your Email Address" required>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" name="Phone" id="phone" placeholder="Enter Your Phone Number" required>
+                    <label for="counselor">Preferred Counselor:</label>
+                    <select name="Counselor" id="counselor" required>
+                        <option value="">Select Preferred Counselor</option>
+                        <option value="Pastor John">Pastor John</option>
+                        <option value="Reverend Mary">Reverend Mary</option>
+                        <option value="Brother James">Brother James</option>
+                        <!-- Add more options if needed -->
+                    </select>
+                    <br>
+                    <br>
+                    <label for="date">Preferred Date:</label>
+                    <input type="date" name="Date" id="date" required>
+                    <label for="time">Preferred Time:</label>
+                    <input type="time" name="Time" id="time" required>
+                    <label for="message">Additional Notes:</label>
+                    <textarea name="Message" id="message" rows="8" placeholder="Any additional information or specific requests"></textarea>
+                    <button type="submit" class="hero_btn btn">Schedule Counseling</button>
+                </form>                              
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section End -->
+
+    <!-- Footer Section Start -->
+    <section class="footer">
+        <hr>
+        <h4>Light of God International Ministries</h4>
+        <p>Light of God International Ministries is a welcoming and vibrant church dedicated to spreading the light of God's love and grace to all.</p>
+    
+        <div class="icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>Developed by <a href="https://firisolutions.io">FIRI Solutions</a></p>
+        <p>Copyright © 2024 <a href="index.html">Light of God International Ministries</a>. All Rights Reserved</p>
+    </section>    
+    <!-- Footer Section End -->
+
+</body>
+<script src="script.js"></script>
+</html>

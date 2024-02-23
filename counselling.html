@@ -83,15 +83,25 @@
                 </div>                                
             </div>
             <div class="content-col">
-                <form id="counselingForm" action="https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec" method="post" autocomplete="off">
-                    <input type="hidden" name="FormId" value="counselingForm">
+                <form id="form3" action="https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec" method="post" autocomplete="off">
+                    <input type="hidden" name="FormId" value="form3">
                     <label for="fullName">Full Name:</label>
                     <input type="text" name="FullName" id="fullName" placeholder="Enter Your Full Name" required>
                     <label for="email">Email:</label>
                     <input type="email" name="Email" id="email" placeholder="Enter Your Email Address" required>
                     <label for="phone">Phone Number:</label>
                     <input type="tel" name="Phone" id="phone" placeholder="Enter Your Phone Number" required>
-                    <label for="counselor">Preferred Counselor:</label>
+                    <label for="category">Category:</label>
+                    <select name="Category" id="category" required>
+                        <option value="">Choose Category</option>
+                        <option value="Confidential">Confidential</option>
+                        <option value="General">General</option>
+                        <option value="Marital">Marital</option>
+                        <!-- Add more options if needed -->
+                    </select>
+                    <br>
+                    <br>
+                    <label for="category">Counselor:</label>
                     <select name="Counselor" id="counselor" required>
                         <option value="">Select Preferred Counselor</option>
                         <option value="Pastor John">Pastor John</option>
@@ -134,4 +144,52 @@
 
 </body>
 <script src="script.js"></script>
+
+<script>
+    // Get today's date
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var yyyy = today.getFullYear();
+
+    // Set the minimum date for the date input field
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("date").setAttribute("min", today);
+</script>
+
+<script>
+    function validateForm() {
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        var selectedDate = new Date(date + "T" + time);
+        var selectedDay = selectedDate.getDay(); // 0: Sunday, 1: Monday, ..., 6: Saturday
+        var selectedHour = selectedDate.getHours();
+
+        // Check if it's a weekend (Saturday or Sunday)
+        if (selectedDay === 0 || selectedDay === 6) {
+            alert("Please select a date from Monday to Friday.");
+            return false;
+        }
+
+        // Check if it's a weekday (Monday to Friday)
+        if (selectedDay < 1 || selectedDay > 5) {
+            alert("Please select a date from Monday to Friday.");
+            return false;
+        }
+
+        // Check if it's within working hours (8AM to 6PM)
+        if (selectedHour < 8 || selectedHour >= 18) {
+            alert("Please select a time between 8:00 AM and 6:00 PM.");
+            return false;
+        }
+
+        // Check if selected time falls within the valid time slots (2-hour intervals)
+        if (selectedHour % 2 !== 0) {
+            alert("Please select a time in 2-hour intervals (e.g., 8:00 AM, 10:00 AM, etc.).");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </html>

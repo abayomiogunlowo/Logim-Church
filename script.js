@@ -15,6 +15,7 @@ function hideMenu() {
 document.addEventListener("DOMContentLoaded", function () {
     const form1 = document.getElementById("form1");
     const form2 = document.getElementById("form2");
+    const form3 = document.getElementById("form3");
 
     function handleSubmit(event, form, thankYouMessage) {
         event.preventDefault(); // Prevent default form submission
@@ -31,7 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     form2.addEventListener("submit", function (event) {
-        handleSubmit(event, form2, "Your message has been received!");
+        handleSubmit(event, form2, "Your information has been received, please check your email folder for confirmation!");
+    });
+
+    form2.addEventListener("submit", function (event) {
+        handleSubmit(event, form3, "Your session has been schedulled, pending final review. Please check your email folder for confirmed date and time.");
     });
 });
 

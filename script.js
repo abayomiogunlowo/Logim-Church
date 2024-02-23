@@ -1,5 +1,6 @@
-
 var navLinks = document.getElementById("navLinks");
+var modal = document.getElementById("modal");
+var modalMessage = document.getElementById("modal-message");
 
 function showMenu() {
     navLinks.style.right = "0";
@@ -8,7 +9,6 @@ function showMenu() {
 function hideMenu() {
     navLinks.style.right = "-200px";
 }
-
 
 // Forms Handler
 
@@ -20,27 +20,31 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleSubmit(event, form, thankYouMessage) {
         event.preventDefault(); // Prevent default form submission
         
-        // Show the thank you popup with the provided message
-        showThankYouPopup(thankYouMessage);
+        // Set the message in the modal
+        modalMessage.textContent = thankYouMessage;
+        
+        // Show the modal
+        modal.style.display = "block";
 
         // Reset the form
         form.reset();
     }
 
-    form1.addEventListener("submit", function (event) {
-        handleSubmit(event, form1, "Thank you for your message!");
+    document.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Determine which form triggered the event
+        if (event.target === form1) {
+            handleSubmit(event, form1, "Thank you for your message!");
+        } else if (event.target === form2) {
+            handleSubmit(event, form2, "Your information has been received, please check your email folder for confirmation!");
+        } else if (event.target === form3) {
+            handleSubmit(event, form3, "Your session has been scheduled, pending final review. Please check your email folder for confirmed date and time.");
+        }
     });
 
-    form2.addEventListener("submit", function (event) {
-        handleSubmit(event, form2, "Your information has been received, please check your email folder for confirmation!");
-    });
-
-    form2.addEventListener("submit", function (event) {
-        handleSubmit(event, form3, "Your session has been schedulled, pending final review. Please check your email folder for confirmed date and time.");
-    });
+    // Close the modal when the close button is clicked
+    document.getElementsByClassName("close")[0].onclick = function() {
+        modal.style.display = "none";
+    }
 });
-
-function showThankYouPopup(message) {
-    // Display a popup/modal with the provided message
-    alert(message);
-}

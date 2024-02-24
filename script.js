@@ -26,7 +26,28 @@ document.addEventListener("DOMContentLoaded", function () {
         // Show the modal
         modal.style.display = "block";
 
-        // Reset the form
+        // Optionally, close the modal after a certain time
+        //setTimeout(function() {
+            //modal.style.display = "none";
+        //}, 3000); // Adjust the timeout as needed
+
+        // Send form data asynchronously
+        const formData = new FormData(form);
+        fetch(form.action, {
+            method: form.method,
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('Form submitted successfully');
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error.message);
+        });
+        
+        // Optionally, reset the form
         form.reset();
     }
 

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
+    <script src="https://js.flutterwave.com/v3/"></script>
 </head>
 
 <body>
@@ -45,28 +46,88 @@
     </section>
 
     <!-- About Us Section Start -->
+    
+    <section class="contact-us">
+        <p>Transforming Hearts, Empowering Communities: Your Donation Powers Light of God Church's Mission to Spread Hope and Healing Worldwide.</p>
+    <div class="row">
+        <div class="content-col">
+            <h3 style="text-align: center;">TraditionaL Payment method</h3>
+            <br>
+            <div>
+                <i class="fa fa-money"></i>
+                <span>
+                    <h5>01234567890, First Bank Nigeria</h5>
+                    <p>Strictly for your Tithe/Offering payment.</p>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-money"></i>
+                <span>
+                    <h5>01234567890, UBA</h5>
+                    <p>Strictly for church development donation.</p>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-money"></i>
+                <span>
+                    <h5>01234567890, Monie Point</h5>
+                    <p>For general donation.</p>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <span>
+                    <h5>+2348022446543</h5>
+                    <p>For all donation queries please contact us directly using the phone number above. Monday To Sunday, 24hrs</p>
+                </span>
+            </div>
+        </div>
+        <div class="content-col">
+            <h3 style="text-align: center;">Give Online</h3>
+            <br>
+            <form id="form4">
+            <input type="hidden" name="FormId" value="form4">
+              <label for="fullname">Full Name:</label><br>
+              <input type="text" id="fullname" name="fullname" required><br>
+              
+              <label for="email">Email Address:</label><br>
+              <input type="email" id="email" name="email" required><br>
+              
+              <label for="phone">Phone Number:</label><br>
+              <input type="tel" id="phone" name="phone" required><br>
+              
+              <label for="category">Category:</label><br>
+              <select id="category" name="category" required>
+                <option value="yearly">General</option>
+                <option value="one-time">Tithe</option>
+                <option value="monthly">Offering</option>
+                <option value="yearly">Development</option>
+                <option value="yearly">Children</option>
+              </select>
+              <br>
+              <br>
 
-    <div class="container">
-        <section id="donation1">
-        <h2>Tithe Offering</h2>
-        <p>Your regular donation to support the church's ongoing ministries and operations.</p>
-        <button onclick="location.href='https://example.com/tithe-donation';">Donate Now</button>
-        </section>
-    
-        <section id="donation2">
-        <h2>Mission Fund</h2>
-        <p>Support our mission work locally and globally, spreading the message of love and hope.</p>
-        <button onclick="location.href='https://example.com/mission-donation';">Donate Now</button>
-        </section>
-    
-        <section id="donation3">
-        <h2>Building Fund</h2>
-        <p>Contribute to the construction and maintenance of our church buildings and facilities.</p>
-        <button onclick="location.href='https://example.com/building-donation';">Donate Now</button>
-        </section>
+              <label for="amount">Amount (NGN):</label><br>
+              <input type="number" id="amount" name="amount" min="100" required><br>
+              
+              <h3>Additional Comments or Instructions:</h3>
+              <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+              
+              <h3>Terms and Conditions:</h3>
+              <input type="checkbox" id="terms" name="terms" required>
+              <label for="terms">I have read and agree to the terms and conditions.</label><br><br>
+              
+              <input type="submit" onclick="processPayment()" class="hero_btn btn" value="Submit Donation">
+            </form>
+            <br>
+            <div>
+              <img src="" alt="Donation Image" width="500" height="500">
+            </div>
+        </div>
     </div>
+    </section>
 
-    <!-- About Us Section end -->
+    <!-- Donation Section end -->
 
     <!-- Footer Section Start -->
     <section class="footer">

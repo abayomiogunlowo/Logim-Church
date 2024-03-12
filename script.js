@@ -69,3 +69,91 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "none";
     }
 });
+
+
+// Donation page processes
+
+function processPayment() {
+    const fullname = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const amount = document.getElementById('amount').value;
+    const category = document.getElementById('category').value;
+    const comments = document.getElementById('comments').value;
+    const terms = document.getElementById('terms').checked;
+
+    if (!terms) {
+        alert('Please agree to the terms and conditions.');
+        return;
+    }
+
+    // Construct payload for Flutterwave payment
+    const paymentPayload = {
+        fullname: fullname,
+        email: email,
+        phone: phone,
+        amount: amount,
+        currency: 'NGN',
+        tx_ref: 'donation_' + Date.now(),
+        redirect_url: 'https://yourwebsite.com/thank-you',
+        payment_options: 'card',
+        meta: {
+            donation_purpose: category
+        }
+    };
+
+    // Initialize Flutterwave checkout
+    FlutterwaveCheckout({
+        public_key: 'FLWPUBK_TEST-a420e9f2953915878340cac0c2097b6d-X',
+        tx_ref: paymentPayload.tx_ref,
+        amount: paymentPayload.amount,
+        currency: paymentPayload.currency,
+        customer: {
+            email: paymentPayload.email,
+            phone_number: paymentPayload.phone,
+            name: paymentPayload.fullname,
+        },
+        callback: function(response) {
+            console.log(response);
+            if (response.status === 'successful') {
+                submitDonation(paymentPayload.tx_ref); // Pass transaction ID to submitDonation function
+            } else {
+                alert('Payment failed. Please try again.');
+            }
+        },
+        onclose: function() {
+            console.log('Payment window closed');
+        },
+        customizations: {
+            title: 'Light of God International Ministries',
+            description: category,
+            logo: 'https://logimchurchonline.sirv.com/Logo%20%26%20Designs/CHURCH_LOGO-removebg-preview.ico',
+        }
+    });
+}
+
+function submitDonation(transactionId) {
+    const form = document.getElementById('form4');
+    const formData = new FormData(form);
+
+    // Append transaction ID to form data
+    formData.append('transaction_id', transactionId);
+
+    fetch('https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Donation submitted successfully!');
+            // Optionally reset the form after successful submission
+            form.reset();
+        } else {
+            throw new Error('Failed to submit donation');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to submit donation. Please try again later.');
+    });
+}

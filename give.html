@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap">
-    <script src="https://js.flutterwave.com/v3/"></script>
+        <script src="https://checkout.flutterwave.com/v3.js"></script>
 </head>
 
 <body>
@@ -51,40 +51,6 @@
         <p>Transforming Hearts, Empowering Communities: Your Donation Powers Light of God Church's Mission to Spread Hope and Healing Worldwide.</p>
     <div class="row">
         <div class="content-col">
-            <h3 style="text-align: center;">TraditionaL Payment method</h3>
-            <br>
-            <div>
-                <i class="fa fa-money"></i>
-                <span>
-                    <h5>01234567890, First Bank Nigeria</h5>
-                    <p>Strictly for your Tithe/Offering payment.</p>
-                </span>
-            </div>
-            <div>
-                <i class="fa fa-money"></i>
-                <span>
-                    <h5>01234567890, UBA</h5>
-                    <p>Strictly for church development donation.</p>
-                </span>
-            </div>
-            <div>
-                <i class="fa fa-money"></i>
-                <span>
-                    <h5>01234567890, Monie Point</h5>
-                    <p>For general donation.</p>
-                </span>
-            </div>
-            <div>
-                <i class="fa fa-phone"></i>
-                <span>
-                    <h5>+2348022446543</h5>
-                    <p>For all donation queries please contact us directly using the phone number above. Monday To Sunday, 24hrs</p>
-                </span>
-            </div>
-        </div>
-        <div class="content-col">
-            <h3 style="text-align: center;">Give Online</h3>
-            <br>
             <form id="form4">
             <input type="hidden" name="FormId" value="form4">
               <label for="fullname">Full Name:</label><br>
@@ -98,11 +64,11 @@
               
               <label for="category">Category:</label><br>
               <select id="category" name="category" required>
-                <option value="yearly">General</option>
-                <option value="one-time">Tithe</option>
-                <option value="monthly">Offering</option>
-                <option value="yearly">Development</option>
-                <option value="yearly">Children</option>
+                <option value="General">General</option>
+                <option value="Tithe">Tithe</option>
+                <option value="Offering">Offering</option>
+                <option value="Development">Development</option>
+                <option value="Children">Children</option>
               </select>
               <br>
               <br>
@@ -119,11 +85,27 @@
               
               <input type="submit" onclick="processPayment()" class="hero_btn btn" value="Submit Donation">
             </form>
+        </div>
+        <div class="content-col">
+            <h3 style="text-align: center;">TraditionaL Payment method</h3>
             <br>
             <div>
-              <img src="" alt="Donation Image" width="500" height="500">
+                <i class="fa fa-money"></i>
+                <span>
+                    <p>For all donation, pay to account below;</p>
+                    <h5>0100888503, Access Bank</h5>
+                </span>
+            </div>
+            <div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <span>
+                    <h5>+2348033798978</h5>
+                    <p>For all donation queries please contact us directly using the phone number above. Monday To Sunday, 24hrs</p>
+                </span>
             </div>
         </div>
+    </div>
     </div>
     </section>
 

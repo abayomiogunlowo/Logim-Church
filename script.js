@@ -83,7 +83,7 @@ function processPayment() {
     const terms = document.getElementById('terms').checked;
 
     if (!terms) {
-        alert('Please agree to the terms and conditions.');
+        //alert('Please agree to the terms and conditions.');
         return;
     }
 
@@ -95,7 +95,7 @@ function processPayment() {
         amount: amount,
         currency: 'NGN',
         tx_ref: 'donation_' + Date.now(),
-        redirect_url: 'https://yourwebsite.com/thank-you',
+        redirect_url: 'https://logim-church.vercel.app/register.html',
         payment_options: 'card',
         meta: {
             donation_purpose: category
@@ -115,14 +115,16 @@ function processPayment() {
         },
         callback: function(response) {
             console.log(response);
-            if (response.status === 'successful') {
-                submitDonation(paymentPayload.tx_ref); // Pass transaction ID to submitDonation function
+            if (response.status === 'completed') {
+                submitDonation(response); // Pass transaction ID to submitDonation function
             } else {
                 alert('Payment failed. Please try again.');
             }
         },
         onclose: function() {
-            console.log('Payment window closed');
+            //console.log('Payment window closed');
+            // Refresh the page after the payment modal is closed
+            window.location.reload();
         },
         customizations: {
             title: 'Light of God International Ministries',
@@ -132,20 +134,30 @@ function processPayment() {
     });
 }
 
-function submitDonation(transactionId) {
+function submitDonation(response) {
     const form = document.getElementById('form4');
     const formData = new FormData(form);
 
-    // Append transaction ID to form data
-    formData.append('transaction_id', transactionId);
+    // Append transaction details to form data
+    formData.append('charge_response_code', response.charge_response_code);
+    formData.append('charge_response_message', response.charge_response_message);
+    formData.append('charged_amount', response.charged_amount);
+    formData.append('created_at', response.created_at);
+    formData.append('currency', response.currency);
+    formData.append('flw_ref', response.flw_ref);
+    formData.append('redirectstatus', response.redirectstatus);
+    formData.append('status', response.status);
+    formData.append('transaction_id', response.transaction_id);
+    formData.append('tx_ref', response.tx_ref);
 
+    // Fetch to submit the form data to Google Apps Script
     fetch('https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec', {
         method: 'POST',
         body: formData
     })
     .then(response => {
         if (response.ok) {
-            alert('Donation submitted successfully!');
+            //alert('Donation submitted successfully!');
             // Optionally reset the form after successful submission
             form.reset();
         } else {

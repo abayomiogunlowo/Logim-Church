@@ -52,18 +52,22 @@
     <div class="row">
         <div class="content-col">
             <form id="form4">
-            <input type="hidden" name="FormId" value="form4">
-              <label for="fullname">Full Name:</label><br>
-              <input type="text" id="fullname" name="fullname" required><br>
+            <input type="hidden" name="FormId" value="form4"><!-- Update the form in your HTML -->
+              <label for="anonymous">Donate Anonymously:</label><br class="hideable">
+              <input type="checkbox" id="anonymous" name="anonymous" onchange="toggleAnonymousFields()"><br class="hideable">
+                
+              <label for="fullname">Full Name:</label><br class="hideable">
+              <input type="text" id="fullname" name="fullname" required><br class="hideable">
               
-              <label for="email">Email Address:</label><br>
-              <input type="email" id="email" name="email" required><br>
+              <label for="email">Email Address:</label><br class="hideable">
+              <input type="email" id="email" name="email" required><br class="hideable">
               
-              <label for="phone">Phone Number:</label><br>
-              <input type="tel" id="phone" name="phone" required><br>
+              <label for="phone">Phone Number:</label><br class="hideable">
+              <input type="tel" id="phone" name="phone" required><br class="hideable">
               
               <label for="category">Category:</label><br>
               <select id="category" name="category" required>
+                <option value="" disabled selected>Choose</option>
                 <option value="General">General</option>
                 <option value="Tithe">Tithe</option>
                 <option value="Offering">Offering</option>
@@ -77,14 +81,16 @@
               <input type="number" id="amount" name="amount" min="100" required><br>
               
               <h3>Additional Comments or Instructions:</h3>
-              <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+              <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br class="hideable">
               
               <h3>Terms and Conditions:</h3>
               <input type="checkbox" id="terms" name="terms" required>
               <label for="terms">I have read and agree to the terms and conditions.</label><br><br>
               
-              <input type="submit" onclick="processPayment()" class="hero_btn btn" value="Submit Donation">
+              <input type="submit" id="submitBtn" onclick="processPayment()" class="hero_btn btn" value="Submit Donation" disabled>
             </form>
+            <br>
+            <br>
         </div>
         <div class="content-col">
             <h3 style="text-align: center;">TraditionaL Payment method</h3>

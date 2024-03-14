@@ -73,6 +73,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Donation page processes
 
+function toggleAnonymousFields() {
+    const anonymousCheckbox = document.getElementById('anonymous');
+    const fullnameLabel = document.querySelector('label[for="fullname"]');
+    const fullnameInput = document.getElementById('fullname');
+    const emailLabel = document.querySelector('label[for="email"]');
+    const emailInput = document.getElementById('email');
+    const phoneLabel = document.querySelector('label[for="phone"]');
+    const phoneInput = document.getElementById('phone');
+    const commentsHeader = document.querySelector('h3');
+    const commentsInput = document.getElementById('comments');
+    const brElements = document.querySelectorAll('.hideable'); // Select by class
+
+    if (anonymousCheckbox.checked) {
+        // Set values to specific values when fields are hidden
+        fullnameInput.value = 'Anonymous';
+        emailInput.value = 'logimchurchonline@gmail.com';
+        phoneInput.value = '2348022446543';
+        commentsInput.value = 'No Comment';
+
+        // Hide the labels, fields, and <br> elements
+        fullnameLabel.style.display = 'none';
+        fullnameInput.style.display = 'none';
+        emailLabel.style.display = 'none';
+        emailInput.style.display = 'none';
+        phoneLabel.style.display = 'none';
+        phoneInput.style.display = 'none';
+        commentsHeader.style.display = 'none';
+        commentsInput.style.display = 'none';
+
+        // Hide <br> elements with the class "hideable"
+        brElements.forEach(br => {
+            br.style.display = 'none';
+        });
+    } else {
+        // Clear the values when checkbox is unchecked
+        fullnameInput.value = '';
+        emailInput.value = '';
+        phoneInput.value = '';
+        commentsInput.value = '';
+
+        // Show the labels, fields, and <br> elements
+        fullnameLabel.style.display = 'block';
+        fullnameInput.style.display = 'block';
+        emailLabel.style.display = 'block';
+        emailInput.style.display = 'block';
+        phoneLabel.style.display = 'block';
+        phoneInput.style.display = 'block';
+        commentsHeader.style.display = 'block';
+        commentsInput.style.display = 'block';
+
+        // Show <br> elements with the class "hideable"
+        brElements.forEach(br => {
+            br.style.display = 'block';
+        });
+    }
+}
+
+
+function checkFormValidity() {
+    const fullname = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const amount = document.getElementById('amount').value;
+    const category = document.getElementById('category').value;
+    const terms = document.getElementById('terms').checked;
+
+    // Check if all required fields are filled
+    const allFieldsFilled = fullname.trim() !== '' && email.trim() !== '' && phone.trim() !== '' && amount.trim() !== '' && category.trim() !== '' && terms;
+
+    // Enable or disable the submit button based on form validity
+    document.getElementById('submitBtn').disabled = !allFieldsFilled;
+}
+
+// Add event listeners to input fields to check form validity on change
+document.getElementById('fullname').addEventListener('input', checkFormValidity);
+document.getElementById('email').addEventListener('input', checkFormValidity);
+document.getElementById('phone').addEventListener('input', checkFormValidity);
+document.getElementById('amount').addEventListener('input', checkFormValidity);
+document.getElementById('category').addEventListener('change', checkFormValidity);
+document.getElementById('terms').addEventListener('change', checkFormValidity);
+
+
+
 function processPayment() {
     const fullname = document.getElementById('fullname').value;
     const email = document.getElementById('email').value;
@@ -81,10 +164,25 @@ function processPayment() {
     const category = document.getElementById('category').value;
     const comments = document.getElementById('comments').value;
     const terms = document.getElementById('terms').checked;
+    const anonymousCheckbox = document.getElementById('anonymous');
+
+    if (anonymousCheckbox.checked) {
+        // If anonymous, clear specific fields
+        document.getElementById('fullname').value = 'Anonymous';
+        document.getElementById('email').value = 'logimchurchonline@gmail.com';
+        document.getElementById('phone').value = '2348022446543';
+        document.getElementById('comments').value = 'No Comment';
+    } else {
+        // Validate required fields
+        if (fullname.trim() === '' || email.trim() === '' || phone.trim() === '' || amount.trim() === '') {
+            alert('Please fill out all required fields.');
+            return; // Prevent form submission
+        }
+    }
 
     if (!terms) {
-        //alert('Please agree to the terms and conditions.');
-        return;
+        alert('Please agree to the terms and conditions.');
+        return; // Prevent form submission
     }
 
     // Construct payload for Flutterwave payment

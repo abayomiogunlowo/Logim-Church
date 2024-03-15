@@ -131,30 +131,6 @@ function toggleAnonymousFields() {
 }
 
 
-function checkFormValidity() {
-    const fullname = document.getElementById('fullname').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const amount = document.getElementById('amount').value;
-    const category = document.getElementById('category').value;
-    const terms = document.getElementById('terms').checked;
-
-    // Check if all required fields are filled
-    const allFieldsFilled = fullname.trim() !== '' && email.trim() !== '' && phone.trim() !== '' && amount.trim() !== '' && category.trim() !== '' && terms;
-
-    // Enable or disable the submit button based on form validity
-    document.getElementById('submitBtn').disabled = !allFieldsFilled;
-}
-
-// Add event listeners to input fields to check form validity on change
-document.getElementById('fullname').addEventListener('input', checkFormValidity);
-document.getElementById('email').addEventListener('input', checkFormValidity);
-document.getElementById('phone').addEventListener('input', checkFormValidity);
-document.getElementById('amount').addEventListener('input', checkFormValidity);
-document.getElementById('category').addEventListener('change', checkFormValidity);
-document.getElementById('terms').addEventListener('change', checkFormValidity);
-
-
 
 function processPayment() {
     const fullname = document.getElementById('fullname').value;
@@ -174,10 +150,15 @@ function processPayment() {
         document.getElementById('comments').value = 'No Comment';
     } else {
         // Validate required fields
-        if (fullname.trim() === '' || email.trim() === '' || phone.trim() === '' || amount.trim() === '') {
+        if (fullname.trim() === '' || email.trim() === '' || phone.trim() === '' || amount.trim() === '' || category.trim() === '') {
             alert('Please fill out all required fields.');
             return; // Prevent form submission
         }
+    }
+
+    if (!category) {
+        alert('Please choose a category.');
+        return; // Prevent form submission
     }
 
     if (!terms) {

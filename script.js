@@ -161,6 +161,11 @@ function processPayment() {
         return; // Prevent form submission
     }
 
+    if (!amount) {
+        alert('Please enter an amount.');
+        return; // Prevent form submission
+    }
+
     if (!terms) {
         alert('Please agree to the terms and conditions.');
         return; // Prevent form submission

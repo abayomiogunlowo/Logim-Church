@@ -115,7 +115,7 @@
                     <th>Title</th>
                     <th>Author</th>
                     <th>Publish Date</th>
-                    <th>Content URL</th>
+                    <th>>>></th>
                 </tr>
             </thead>
             <tbody>
@@ -127,43 +127,6 @@
             <div id="descriptionContent"></div>
         </div>
     </section>
-    
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const sheetId = '1_mVw4Jtn-2TdMVrWpTnA3dYJW0yvvm9_RzubatnmU4Q';
-            const apiKey = 'AIzaSyDDmQkNENe4B3SBeGHHXP067X6vOdYQbGc';
-            const sheetName = 'LIBRARY';
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}!A2:E?key=${apiKey}`;
-    
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.querySelector('#libraryTable tbody');
-                    data.values.forEach(row => {
-                        const tr = document.createElement('tr');
-                        row.forEach(cell => {
-                            const td = document.createElement('td');
-                            // Check if the cell contains HTML content (a hyperlink)
-                            if (cell.startsWith('<a href=')) {
-                                // Create a temporary element to parse the HTML content
-                                const temp = document.createElement('div');
-                                temp.innerHTML = cell;
-                                // Append the parsed HTML content to the table cell
-                                td.appendChild(temp.firstChild);
-                            } else {
-                                // If it's plain text, simply set the text content
-                                td.textContent = cell;
-                            }
-                            tr.appendChild(td);
-                        });
-                        tableBody.appendChild(tr);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        });
-    </script>
     
     
 
@@ -185,6 +148,30 @@
         <p>Copyright © 2024 <a href="index.html">Light of God International Ministries</a>. All Rights Reserved</p>
     </section>    
     <!-- Footer Section End -->
+    
+
+    <script>
+        // Fetch data from the Appscript URL
+        fetch('https://script.google.com/macros/s/AKfycbxy0PmATE8FbWisMKtMNsLb8KSL6IssAVPs6wKAVVWEIWJ_f4hZ32puyytgEyZqj682/exec?action=getSingleDataBase&sheet=BLOG&key=webAccessKey')
+            .then(response => response.json())
+            .then(data => {
+                // Populate the table with data
+                const tableBody = document.querySelector('#libraryTable tbody');
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.libID}</td>
+                        <td>${item.title}</td>
+                        <td>${item.authorPastor}</td>
+                        <td>${item.publishDT}</td>
+                        <td><a href="${item.contentURL}" target="_blank">${item.buttonText}</a></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
 
 </body>
 <script src="script.js"></script>
